@@ -1,0 +1,9 @@
+﻿@model List<HsServiceStack.Models.TodoList>
+
+@foreach (var tdl in Model)
+{
+    <h3>@tdl.Name</h3>
+    <ul class="list-group">
+        <li>@tdl.Tags</li>
+    </ul>
+}

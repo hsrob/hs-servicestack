@@ -1,0 +1,259 @@
+﻿.ui-body-a, .ui-body-b, .ui-body-c, .ui-body-d, .ui-body-e {
+    table {
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        a.ui-link {
+            text-decoration: none;
+        }
+    }
+    /* Dropdown menu styling fixes (colors, text-decoration, etc) */
+    ul.dropdown-menu {
+        a.ui-link {
+            color: black;
+            text-decoration: none;
+            -webkit-text-shadow: none;
+            text-shadow: none;
+
+            &:hover {
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+
+    a, button, input {
+        &.btn {
+            text-decoration: none!important;
+            font-weight: bold;
+
+            &.btn-success {
+                color: #666;
+            }
+
+            &.btn-primary {
+                color: white;
+            }
+
+            &.btn-info {
+                color: white;
+            }
+
+            &.btn-success {
+                color: white;
+            }
+
+            &.btn-warning {
+                color: white;
+            }
+
+            -webkit-text-shadow: none;
+            text-shadow: none;
+        }
+
+        span.glyphicon {
+            vertical-align: middle;
+        }
+    }
+
+    .pagination {
+        li {
+            &.disabled {
+                a.ui-link {
+                    color: #999;
+                }
+            }
+
+            a.ui-link {
+                &.pad-page-num {
+                    padding-left: 19px;
+                    padding-right: 19px;
+                }
+            }
+        }
+    }
+
+    ul.nav {
+        li.active {
+            a {
+                color: #f5f5f5;
+            }
+        }
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .alert {
+        -webkit-text-shadow: none;
+        text-shadow: none;
+
+        a {
+            font-weight: bold;
+
+            &:visited {
+                color: #2489ce;
+            }
+        }
+    }
+
+    .panel {
+        .panel-heading {
+            -webkit-text-shadow: none;
+            text-shadow: none;
+        }
+    }
+}
+
+// Toolbar button groups - Responsive Switch to vertical
+// ----------------------
+
+@media (max-width: 768px) {
+    table .btn-toolbar {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+
+        > .btn {
+            display: block;
+            float: none;
+            width: 100%;
+            max-width: 100%;
+
+            &:hover,
+            &:active {
+                z-index: 2;
+            }
+
+            + .btn {
+                margin-top: -1px;
+            }
+        }
+
+        .btn:not(:first-child):not(:last-child) {
+            border-radius: 0;
+        }
+
+        .btn:first-child {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .btn:last-child {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+}
+
+/* Allow non .form-control inputs to have old default styles - Overrides change from 3.0.0-rc1 */
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+    display: block;
+    width: 100%;
+    height: 38px;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+    vertical-align: middle;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+
+    &:focus {
+        border-color: rgba(82, 168, 236, 0.8);
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+    }
+}
+
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+    &.input-large {
+        height: 56px;
+        padding: 14px 16px;
+        font-size: 18px;
+        border-radius: 6px;
+    }
+
+    &.input-small {
+        height: 30px;
+        padding: 5px 10px;
+        font-size: 12px;
+        border-radius: 3px;
+    }
+}
+
+select.input-large {
+  height: 56px;
+  line-height: 56px;
+}
+
+select.input-small {
+  height: 30px;
+  line-height: 30px;
+}
+
+// DISABLED STATE
+// --------------
+
+// Disabled and read-only inputs
+// Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
+//   disabled if the fieldset is disabled. Due to implementation difficulty,
+//   we don't honor that edge case; we style them as disabled anyway.
+input,
+select,
+textarea {
+    &[disabled],
+    &[readonly],
+    fieldset[disabled] & {
+        cursor: not-allowed;
+        background-color: #eeeeee;
+    }
+}
+    // Explicitly reset the colors here
+    input[type="radio"],
+    input[type="checkbox"] {
+        &[disabled],
+        &[readonly],
+        fieldset[disabled] & {
+            background-color: transparent;
+        }
+    }

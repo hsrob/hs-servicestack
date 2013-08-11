@@ -1,0 +1,44 @@
+﻿@using ServiceStack.Html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@(String.IsNullOrWhiteSpace(ViewBag.Title) ? "To-Do Master 9002" : ViewBag.Title)</title>
+    <meta name="viewport" content="width=device-width" />
+    @ServiceStack.MiniProfiler.Profiler.RenderIncludes().AsRaw()
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+    @Styles.Render("~/Assets/bundle/styles")
+    @Styles.Render("~/Assets/bundle/styles/order")
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/additional-methods.min.js" type="text/javascript"></script>
+    @Scripts.Render("~/Assets/bundle/scripts")
+</head>
+<body>
+    <div class="container" id="main-page">
+        <div class="navbar navbar-fixed-top">
+            <div class="container">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">To-Do Master 9002</a>
+                <div class="nav-collapse collapse navbar-responsive-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/Assets/bundle/scripts/order")
+</body>
+</html>

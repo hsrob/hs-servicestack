@@ -1,0 +1,182 @@
+﻿@import 'bootstrap-hs';
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 70px;
+}
+
+.view-switcher {
+    padding: 0.5em;
+    font-weight: normal;
+}
+
+/* styles for validation helpers */
+.field-validation-error, label.error {
+    color: #e80c4d;
+    font-weight: bold;
+    display: block;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input[type="text"].input-validation-error,
+input[type="password"].input-validation-error input[type="text"].error,
+input[type="password"].error {
+    border: solid 1px #e80c4d;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-body-a button {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.ui-body-b, .ui-body-b input, .ui-body-b select, .ui-body-b textarea, .ui-body-b button {
+    font-family: 'Open Sans', sans-serif;
+}
+
+    .ui-body-c, .ui-body-c input, .ui-body-c select, .ui-body-c textarea, .ui-body-b button {
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .ui-body-d, .ui-body-d input, .ui-body-b select, .ui-body-d textarea, .ui-body-d button {
+        font-family: 'Open Sans', sans-serif;
+    }
+
+.ui-body-e, .ui-body-e input, .ui-body-e select, .ui-body-e textarea, .ui-body-e button {
+    font-family: 'Open Sans', sans-serif;
+}
+
+//Only hide relations for new entries that haven't been created yet
+div.relation-links.new-model {
+    display: none;
+}
+
+.form-list {
+    list-style-type: none;
+}
+
+div.loading {
+    div.indicator {
+        background-image: url(../../img/ajax-loader.gif);
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/*Vertically center btn inside of li.list-group-item (ex. relations)*/
+
+li.list-group-item.clearfix {
+    a.btn-small {
+        margin-top: -6px;
+        margin-bottom: -6px;
+    }
+}
+
+//Smaller panel heading (Bootstrap) with less padding and slightly smaller font
+.panel {
+    .panel-heading {
+        &.panel-heading-compact {
+            padding: 5px 10px;
+            font-size: 15px;
+        }
+    }
+}
+
+//Shift Index dropdown Options menus to the left so they show on small screens.
+.btn-group {
+    ul.dropdown-menu {
+        left: -83px;
+    }
+}
+
+div.dw-persp, div.dwo {
+    z-index: 1100!important;
+}
+
+div.dw {
+    z-index: 1101!important;
+}
+
+
+/* Bump labels down when they are preceded by a visible input*/
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+    & ~ label {
+        margin-top: 5px;
+    }
+}
+
+/* --- Joyride --- */
+
+/* Hide the joyride template tours */
+ol.joyride-tour {
+    display: none;
+}
+
+
+/* --- End Joyride --- */
+
+
+//Make the mobiscroll overlay lighter
+.dw-persp .dwo{
+    opacity:0.2;
+}
+
+.center-container-50{
+    width:50%;
+    margin:0 auto;
+}
+
+/* Required ems */
+em.req{
+    color:red;
+    font-weight:bold;
+}
+
+//Angular tag manager (http://jsfiddle.net/joshdmiller/hAz5A/)
+.tags {
+    margin: 5px 0;
+    display:inline-block;
+}
+.tags .tag {
+    border-radius: 6px;
+    background-color: #EFEFEF;
+    border: 1px solid #DDD;
+    padding: 5px;
+    margin: 10px 10px 0 0;
+    cursor:pointer;
+    float:left;
+}
+.tags .tag:hover {
+    color: red;
+    text-decoration: none;
+}
+
+input { 
+    margin-bottom: 0px !important;
+}
