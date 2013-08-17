@@ -1,9 +1,9 @@
-﻿@model List<HsServiceStack.Models.TodoList>
+﻿<div ng-app="todoList">
+    <div ng-controller="todoListCtrl">
+        
+    </div>
+</div>
 
-@foreach (var tdl in Model)
-{
-    <h3>@tdl.Name</h3>
-    <ul class="list-group">
-        <li>@tdl.Tags</li>
-    </ul>
+@section Scripts{
+    <script type="text/javascript" src="@Url.Content("~/Assets/js/angular_apps/todo/todo-list.js")"></script>
 }

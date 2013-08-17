@@ -3,6 +3,10 @@ using System.Linq;
 using System.Configuration;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Funq;
+using HsServiceStack.Biz.Dal;
+using HsServiceStack.Models;
+using HsServiceStack.WebServices;
 using ServiceStack.Configuration;
 using ServiceStack.CacheAccess;
 using ServiceStack.CacheAccess.Providers;
@@ -17,18 +21,11 @@ using ServiceStack.WebHost.Endpoints;
 [assembly: WebActivator.PreApplicationStartMethod(typeof(HsServiceStack.App_Start.AppHost), "Start")]
 namespace HsServiceStack.App_Start
 {
-	//A customizeable typed UserSession that can be extended with your own properties
-	//To access ServiceStack's Session, Cache, etc from MVC Controllers inherit from ControllerBase<CustomUserSession>
-	public class CustomUserSession : AuthUserSession
-	{
-		public string CustomProperty { get; set; }
-	}
-
 	public class AppHost
 		: AppHostBase
 	{		
 		public AppHost() //Tell ServiceStack the name and where to find your web services
-			: base("HS ServiceStack", typeof(HelloService).Assembly) { }
+			: base("HS ServiceStack", typeof(TodoListService).Assembly) { }
 
 		public override void Configure(Funq.Container container)
 		{
@@ -56,7 +53,7 @@ namespace HsServiceStack.App_Start
 			ConfigureAuth(container);
 
 			//Register all your dependencies
-			container.Register(new TodoRepository());			
+            container.RegisterAutoWiredAs<TodoBizRepo, ITodoBizRepo>().ReusedWithin(ReuseScope.Request);		
 
 			//Set MVC to use the same Funq IOC as ServiceStack
 			ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));
@@ -68,7 +65,7 @@ namespace HsServiceStack.App_Start
 			var appSettings = new AppSettings();
 
 			//Default route: /auth/{provider}
-			Plugins.Add(new AuthFeature(() => new CustomUserSession(),
+			Plugins.Add(new AuthFeature(() => new TodoUserSession(), 
 				new IAuthProvider[] {
 					new CredentialsAuthProvider(appSettings), 
 					new FacebookAuthProvider(appSettings), 

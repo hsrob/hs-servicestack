@@ -20,6 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -176,11 +178,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BaseEntity.cs" />
-    <Compile Include="Models\TodoItem.cs" />
-    <Compile Include="Models\TodoList.cs" />
+    <Compile Include="Models\TodoUserSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebServiceExamples.cs" />
+    <Compile Include="WebServices\TodoListService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\bootstrap\css\bootstrap-glyphicons.css" />
@@ -201,15 +201,10 @@
     <Content Include="Assets\img\glyphicons-halflings.png" />
     <Content Include="Assets\img\header-shadow.png" />
     <Content Include="Assets\img\location.png" />
-    <Content Include="Assets\js\angular_apps\admin\admin.js" />
-    <Content Include="Assets\js\angular_apps\admin\perm-mgr.js" />
-    <Content Include="Assets\js\angular_apps\admin\templates\permdetails.html" />
-    <Content Include="Assets\js\angular_apps\admin\templates\permlist.html" />
-    <Content Include="Assets\js\angular_apps\client\client-chart-behaviors.js" />
-    <Content Include="Assets\js\angular_apps\client\client-select.js" />
+    <Content Include="Assets\js\angular_apps\todo\templates\todoitem.html" />
+    <Content Include="Assets\js\angular_apps\todo\templates\todolist.html" />
     <Content Include="Assets\js\angular_apps\hs-crud.js" />
-    <Content Include="Assets\js\angular_apps\search\es-search.js" />
-    <Content Include="Assets\js\angular_apps\shared\api-response-conversion.js" />
+    <Content Include="Assets\js\angular_apps\todo\todo-list.js" />
     <Content Include="Assets\js\shared_order\angular\angular-bootstrap-prettify.js" />
     <Content Include="Assets\js\shared_order\angular\angular-bootstrap-prettify.min.js" />
     <Content Include="Assets\js\shared_order\angular\angular-bootstrap.js" />
@@ -368,6 +363,16 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HsServiceStack.Biz\HsServiceStack.Biz.csproj">
+      <Project>{4d78c618-1a84-441e-a670-e743bb99ac03}</Project>
+      <Name>HsServiceStack.Biz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HsServiceStack.Models\HsServiceStack.Models.csproj">
+      <Project>{15d956ec-6ef1-4c0b-9ad6-e9fa59b3324d}</Project>
+      <Name>HsServiceStack.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -396,6 +401,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,4 +1,5 @@
-﻿using ServiceStack;
+﻿using HsServiceStack.Models;
+using ServiceStack;
 using ServiceStack.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using ServiceStack.WebHost.Endpoints;
 
 namespace HsServiceStack.Controllers
 {
-    public class BaseController : ServiceStackController
+    public class BaseController : ServiceStackController<TodoUserSession>
     {
         protected AuthService AuthService;
         protected RegistrationService RegistrationService;
