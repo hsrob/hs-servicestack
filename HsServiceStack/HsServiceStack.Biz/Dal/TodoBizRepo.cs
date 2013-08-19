@@ -12,6 +12,8 @@ namespace HsServiceStack.Biz.Dal
         void CreateTestObjects();
         List<TodoList> GetTodoLists();
         TodoList GetTodoList(Guid entityId);
+        void SaveTodoList(TodoList todoList);
+        void AddTodoItem(Guid todoListId, TodoItem todoItem);
     }
     public class TodoBizRepo : ITodoBizRepo
     {
@@ -54,6 +56,7 @@ namespace HsServiceStack.Biz.Dal
             }
         }
 
+        //Get
         public List<TodoList> GetTodoLists()
         {
             using (IDbConnection dbConn = _dbConnectionFactory.Open())
@@ -67,6 +70,27 @@ namespace HsServiceStack.Biz.Dal
             using (IDbConnection dbConn = _dbConnectionFactory.Open())
             {
                 return dbConn.Select<TodoList>().FirstOrDefault(t => t.EntityId == entityId);
+            }
+        }
+        
+        //Insert, Update
+        public void SaveTodoList(TodoList todoList)
+        {
+            using (IDbConnection dbConn = _dbConnectionFactory.Open())
+            {
+                dbConn.Save(todoList);
+            }
+        }
+
+        public void AddTodoItem(Guid todoListId, TodoItem todoItem)
+        {
+            using (var dbConn = _dbConnectionFactory.Open())
+            {
+                var tdList = dbConn.FirstOrDefault<TodoList>(t => t.EntityId == todoListId);
+                if(tdList.TodoItems == null)
+                    tdList.TodoItems = new List<TodoItem>();
+                tdList.TodoItems.Add(todoItem);
+                dbConn.Save(tdList);
             }
         }
     }
