@@ -16,6 +16,7 @@ namespace HsServiceStack
 
             var styleBundle = new CustomStyleBundle("~/Assets/bundle/styles");
             styleBundle.Include("~/Assets/bootstrap/css/bootstrap.min.css",
+                "~/Assets/bootstrap/css/bootstrap-theme.min.css",
                 "~/Assets/bootstrap/css/bootstrap-glyphicons.css", 
                 "~/Assets/css/shared_order/style.min.css");
             styleBundle.Builder = nullBuilder;
@@ -30,7 +31,6 @@ namespace HsServiceStack
 
             var scriptBundle = new CustomScriptBundle("~/Assets/bundle/scripts");
             scriptBundle.Include("~/Assets/bootstrap/js/bootstrap.min.js",
-                "~/Assets/bootstrap/js/bootstrap.min.js",
                 "~/Assets/js/shared_order/angular/angular.min.js",
                 "~/Assets/js/shared_order/lodash.js",
                 "~/Assets/js/shared_order/restangular.js");

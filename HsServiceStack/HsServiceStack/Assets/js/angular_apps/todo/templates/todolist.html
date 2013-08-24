@@ -1,29 +1,8 @@
-﻿<table class="table table-striped table-hover table-bordered" ng-init="loadAllPermissions()">
-    <thead>
-        <th>User Id</th>
-        <th>Name</th>
-        <th>Permissions</th>
-    </thead>
-    <tbody>
-        <tr ng-repeat="perm in resultList">
-            <td><a ng-href="#/{{perm.EntityId}}">{{perm.EntityId}}</a></td>
-            <td>{{perm.UserName}}</td>
-            <td>
-                <table class="table table-striped table-bordered table-condensed">
-                    <thead>
-                        <th>Level</th>
-                        <th>Scope</th>
-                        <th>Types</th>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="grnt in perm.PermissionGrants">
-                            <td>{{grnt.PermissionLevelStrings}}</td>
-                            <td>{{grnt.PermissionScopeStrings}}</td>
-                            <td>{{grnt.PermissionFlagStrings}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-    </tbody>
-</table>
+﻿<div ng-model="todoLists" ng-init="loadTodos()">
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="tdl in todoLists">
+            <strong>{{tdl.Priority}}</strong>&nbsp;<a ng-href="#/{{tdl.EntityId}}">{{tdl.Name}}</a>
+        </li>
+    </ul>
+</div>
+

@@ -1,9 +1,8 @@
 ﻿<div ng-app="todoList">
-    <div ng-controller="todoListCtrl">
-        
-    </div>
+    <div ng-view></div>
 </div>
 
 @section Scripts{
+    <script type="text/javascript" src="@Url.Content("~/Assets/js/angular_apps/hs-crud.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Assets/js/angular_apps/todo/todo-list.js")"></script>
 }

@@ -76,6 +76,13 @@ namespace HsServiceStack.Biz.Dal
         //Insert, Update
         public void SaveTodoList(TodoList todoList)
         {
+            //new only
+            if (todoList.EntityId == default(Guid))
+            {
+                todoList.EntityId = Guid.NewGuid();
+                todoList.CreatedDateTime = DateTime.Now;
+            }
+            todoList.ModifiedDateTime = DateTime.Now;
             using (IDbConnection dbConn = _dbConnectionFactory.Open())
             {
                 dbConn.Save(todoList);
@@ -84,6 +91,10 @@ namespace HsServiceStack.Biz.Dal
 
         public void AddTodoItem(Guid todoListId, TodoItem todoItem)
         {
+            
+                todoItem.EntityId = Guid.NewGuid();
+                todoItem.CreatedDateTime = DateTime.Now;
+            todoItem.ModifiedDateTime = DateTime.Now;
             using (var dbConn = _dbConnectionFactory.Open())
             {
                 var tdList = dbConn.FirstOrDefault<TodoList>(t => t.EntityId == todoListId);
