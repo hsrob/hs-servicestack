@@ -4,17 +4,35 @@
         <a ng-click="navigateBack()" class="btn btn-small btn-info">&laquo; Back To List</a>
     </div>
     <br />
-    <ul>
+    <ul class="list-group">
+        <h4 class="list-group-item-heading">Tasks</h4>
         <todo-items todolist="todoList"></todo-items>
     </ul>
-    <form class="form-inline" name="addtodoitemform" ng-submit="addTodoItem(itm)">
+    <h4>Add a Task</h4>
+    <form class="form-horizontal" name="addtodoitemform" ng-submit="addTodoItem(itm)">
         <div class="form-group">
-            <label for="itmName" class="sr-only">Description</label>
-            <input type="text" id="itmName" name="Name" ng-model="itm.Name" placeholder="Task Description" />
+            <div class="col-lg-2">
+                <label for="itmName">Description</label>
+            </div>
+            <div class="col-lg-10">
+                <input type="text" id="itmName" name="Name" ng-model="itm.Name" placeholder="Task Description" />
+            </div>
         </div>
         <div class="form-group">
-            <label for="itmPriority">Priority</label>
-            <select id="itmPriority" name="Priority" ng-model="itm.Priority" ng-options="o.value as o.label for o in priorityOptions" ng-init="itm.Priority=50" />
+            <div class="col-lg-2">
+                <label for="itmPriority">Priority</label>
+            </div>
+            <div class="col-lg-10">
+                <select id="itmPriority" name="Priority" ng-model="itm.Priority" ng-options="o.value as o.label for o in priorityOptions" ng-init="itm.Priority=50" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-2">
+                <label for="dueDate">Due Date</label>
+            </div>
+            <div class="col-lg-10">
+                <input type="date" id="dueDate" name="DueDateTime" ng-model="itm.DueDateTime" />
+            </div>
         </div>
         <button type="submit" class="btn btn-success" name="submittodoitem"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add Item</button>
     </form>

@@ -73,7 +73,7 @@ namespace HsServiceStack.Biz.Dal
             }
         }
         
-        //Insert, Update
+        //Insert
         public void SaveTodoList(TodoList todoList)
         {
             //new only
@@ -92,8 +92,8 @@ namespace HsServiceStack.Biz.Dal
         public void AddTodoItem(Guid todoListId, TodoItem todoItem)
         {
             
-                todoItem.EntityId = Guid.NewGuid();
-                todoItem.CreatedDateTime = DateTime.Now;
+            todoItem.EntityId = Guid.NewGuid();
+            todoItem.CreatedDateTime = DateTime.Now;
             todoItem.ModifiedDateTime = DateTime.Now;
             using (var dbConn = _dbConnectionFactory.Open())
             {
@@ -101,7 +101,7 @@ namespace HsServiceStack.Biz.Dal
                 if(tdList.TodoItems == null)
                     tdList.TodoItems = new List<TodoItem>();
                 tdList.TodoItems.Add(todoItem);
-                dbConn.Save(tdList);
+                dbConn.Update(tdList);
             }
         }
     }

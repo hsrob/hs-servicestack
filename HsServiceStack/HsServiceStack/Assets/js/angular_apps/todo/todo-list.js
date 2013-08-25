@@ -1,4 +1,4 @@
-﻿var app = angular.module('todoList', ['hsCrud'])
+﻿var app = angular.module('todoList', ['hsCrud', 'ui.calendar'])
     //provide the dependency(ies) as an array, with strings first, then the dependent function.
     //This prevents issues with minification from affecting Angular's dependency injection framework.
     .config(['$routeProvider', function ($routeProvider) {
@@ -38,9 +38,15 @@
         $scope.todoListId = $routeParams.todoListId;
         $scope.addTodoItem = function (itm) {
             var newItm = angular.copy(itm);
-            $scope.todoList.TodoItems.push(newItm);
-            $scope.todoPromise.customPUT('additem', {}, {}, { TodoItemDto: newItm });
+            $scope.todoPromise.customPUT('additem', {}, {}, { TodoItemDto: newItm }).then(function(res) {
+                $scope.todoList.TodoItems.push(newItm);
+            });
         };
+        
+        $scope.navigateBack = function () {
+            $location.url('/');
+        };
+        
         $scope.priorityOptions = [{ label: 'Low', value: 1 }, { label: 'Normal', value: 50 }, { label: 'High', value: 100 }];
         $scope.loadTodoDetails = function () {
             var todoLoadResp = basicCrud.loadOne('list', $scope.todoListId);
@@ -57,8 +63,12 @@
             scope: {
                 todolist: '='
             },
-            template: '<li class="list-item" ng-repeat="tdi in todolist.TodoItems">{{tdi.Name}}</li>',
+            template: '<li class="list-group-item" ng-repeat="tdi in todolist.TodoItems">{{tdi.Name}}&nbsp;<em>Due <span ng-bind="formatDateFromNow(tdi.DueDateTime)"></span></em></li>',
             link: function (scope, elem, attrs) {
+                scope.formatDateFromNow = function (dt) {
+                    var mmt = moment(dt);
+                    return mmt.fromNow();
+                };
             }
         };
     });

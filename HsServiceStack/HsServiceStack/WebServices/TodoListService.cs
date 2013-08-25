@@ -11,6 +11,7 @@ using HsServiceStack.Biz.Dal;
 
 namespace HsServiceStack.WebServices
 {
+    [Route("/todolist/list", "GET")]
     [Route("/todolist/list/{TodoListId}", "GET")]
     public class TodoListRequest
     {

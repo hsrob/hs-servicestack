@@ -193,6 +193,8 @@
     <Content Include="Assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\bootstrap\js\bootstrap.js" />
     <Content Include="Assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Assets\css\shared\fullcalendar.css" />
+    <Content Include="Assets\css\shared\fullcalendar.print.css" />
     <Content Include="Assets\css\shared\jquery.tagsinput.css" />
     <Content Include="Assets\css\shared_order\bootstrap-hs.css" />
     <Content Include="Assets\css\shared_order\bootstrap-hs.min.css" />
@@ -227,8 +229,12 @@
     <Content Include="Assets\js\shared_order\angular\angular.min.js" />
     <Content Include="Assets\js\shared_order\angular\version.txt" />
     <Content Include="Assets\js\shared_order\bhvr.utils.js" />
+    <Content Include="Assets\js\shared_order\calendar.js" />
+    <Content Include="Assets\js\shared_order\fullcalendar.js" />
+    <Content Include="Assets\js\shared_order\gcal.js" />
     <Content Include="Assets\js\shared_order\jquery-1.9.1.js" />
     <Content Include="Assets\js\shared_order\lodash.js" />
+    <Content Include="Assets\js\shared_order\moment.js" />
     <Content Include="Assets\js\shared_order\restangular.js" />
     <Content Include="Assets\js\vsdoc\d3.js" />
     <Content Include="Assets\js\vsdoc\jquery-1.9.1.vsdoc.js" />
